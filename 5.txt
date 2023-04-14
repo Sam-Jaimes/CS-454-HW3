@@ -1,0 +1,3 @@
+12.7 Prove that the Tree[2k] balancing network constructed
+in section 12.6 is a counting network, that is, that in any quiescient state, the sequences
+of tokens on its output wires have the step property

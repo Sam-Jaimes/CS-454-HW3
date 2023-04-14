@@ -1,0 +1,2 @@
+9.14 Would the lazy algorithm still work if we marked a node as removed simply bu setting its next field to null? 
+why or why not? what about the lock-free algorithm?

@@ -1,0 +1,19 @@
+8.5 A savings account object holds a nonnegative balance, and provides deposit(k) and withdraw(k) methods, where deposit(k) adds
+k to the balance, and withdraw subtracts k, if the balance is at least k, and otherwise blocks until the balance becomes
+k or greater.
+1. Implement this saving account using locks and conditions.
+2. Now suppose there are two kinds of withdrawals: ordinary and preferred. Devise an implementation
+that ensures that no ordinary withdrawal occurs if these is a preferred withdrawal waiting to occur.
+3. Now add a transfer() method that transfersa sum from one account to another:
+void transfer(int k,Account reserve{
+    lock.lock()
+    try{
+        reverse.withdraw(k)
+        deposit(k)
+    }finally{
+        lock.unlock()
+    }
+}
+
+WE are given a set of 10 accounts, whose balance are unknown. At 1pm each of n threads tries to transfer $100 from another account into its own account. 
+at 2pm a boss thread deposits $1000 to each account. Is every transfer method called at 1pm certain to return?

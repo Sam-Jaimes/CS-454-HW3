@@ -27,4 +27,9 @@ public class HWQueue<T> {
 }
 
     1. Are the enq() and deq() methods wait-free? if not, are they lock-free? explain.
+        they are not wait free b/c lets say items is full of values tail.getAndIncrement does not return until there is space in items
+        and deq() if items happens to be empty and full of null values it stays looping until it returns a value.
+        
     2. identify linearization points for the enq() and deq() methods. (careful! they may be execution-dependent)
+        on line 13 when setting items[i].set(x) and on line 20 when setting value = items[i].getAndSet(null)
+

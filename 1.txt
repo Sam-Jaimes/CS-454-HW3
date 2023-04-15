@@ -1,0 +1,11 @@
+8.4 The ReentrantReadWriteLock class provided by the java.util.concurrent.locks 
+package does not allow a thread holding the lock in read mode to the access that lock in write mode (the thread will block). 
+justify this design decision by sketching what it would take to permit such lock upgrades
+
+So idk what they mean by "what it would take to permit such lock upgrades" like upgrade the lock to something else?
+but justifying the ReadWriteLock rules... It allow multiple read mode lock into the 
+critical seciton because they are not changing anything they are just reading a value 
+and it wont change but if you were to let a write lock in while a read lock is also in
+we get changes in what threads could read. like if threads are reading "john" and then 
+a write thread changes it to "peter" we could get threads who are reading 
+to return with either or values.

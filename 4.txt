@@ -1,0 +1,35 @@
+10.7 Consider the unbounded queue implementation shown in fig 10.22
+this queue is blocking, meaning that the deq() method does not return until it has found
+an item to dequeue.
+    the queue has two fields: items is a very large array, and tail is the index of the next unused elements in the array
+
+
+public class HWQueue<T> {
+    AtomicReference<T>[] items
+    AtomicInteger tail
+    ...
+    public void enq(T x){
+        int i = tail.getAndIncrement();
+        items[i].set(x);
+
+    }
+    public T deq(){
+        while(true){
+            int range = tail.get();
+            for(int i = 0;i<range;i++){
+                T value = items[i].getAndSet(null);
+                if(value != null){
+                    return value;
+                }
+            }
+        }
+    }
+}
+
+    1. Are the enq() and deq() methods wait-free? if not, are they lock-free? explain.
+        they are not wait free b/c lets say items is full of values tail.getAndIncrement does not return until there is space in items
+        and deq() if items happens to be empty and full of null values it stays looping until it returns a value.
+        
+    2. identify linearization points for the enq() and deq() methods. (careful! they may be execution-dependent)
+        on line 13 when setting items[i].set(x) and on line 20 when setting value = items[i].getAndSet(null)
+

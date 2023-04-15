@@ -1,0 +1,12 @@
+9.14 Would the lazy algorithm still work if we marked a node as removed simply but setting its next field to null? 
+why or why not? what about the lock-free algorithm?
+
+No b/c the remove could be happening in the middle of the list,
+the lazy algorithm require you mark the node and then set the predecessor.next = markednode.next
+if it happened to be the last item in the list it would work because the markednode.next would be null anyway.
+
+for the lock-free algorithm it would work 
+becuase it calls the window() method which returns 
+unmarked nodes on each side of the key and gets rid of the
+marked nodes so if we mark and set the next fiel to null it would
+return the next node not marked.

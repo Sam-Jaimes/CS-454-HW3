@@ -1,0 +1,16 @@
+12.7 Prove that the Tree[2k] balancing network constructed
+in section 12.6 is a counting network, that is, that in any quiescent state, the sequences
+of tokens on its output wires have the step property
+
+a counting network is a counter that delivers a quiesciently consistent set of indices with high throughput,
+a balancer is quiescent if every token that arrives on input wire has emerged on an output wire.
+and a balancing network is constructed by connecting some balancers output wires to other balancers input wires
+
+tree[2k] is derrived inductively from a binary tree, when k is equal to 1 tree[2k] consists of a single balancer with out wires y0 and y1
+and for k>1 construct tree[2k] from two tree[k] trees and one additional balancer.
+
+assume tree[2k] has a step property in a quiescent state,
+tree[k] has the step property in a quiescent state by the book, because
+tree[2k] is derived from two tree[k] trees and one additional balancer
+then tree[2k+1] is derived from 2 tree[k] trees and one additional balancer aswell
+then by induction tree[2k] has a step property in a quiescent state
